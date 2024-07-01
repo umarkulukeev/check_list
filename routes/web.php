@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\ConsolidatedListController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('uploads/create', [UploadController::class, 'create'])->name('uploads.create');
+Route::post('uploads/store', [UploadController::class, 'store'])->name('uploads.store');
+
+Route::get('list', [ConsolidatedListController::class, 'list'])->name('consolidated.list');
+Route::post('list/check', [ConsolidatedListController::class, 'check'])->name('consolidated.list.check');
